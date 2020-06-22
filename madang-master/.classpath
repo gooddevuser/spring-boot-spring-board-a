@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="com/madang/vo/|com/madang/service/|com/madang/mapper/" kind="src" path="madang-master/madang/src/main/java"/>
+	<classpathentry kind="src" path="madang-master/madang/src/main/java/com/madang/mapper"/>
+	<classpathentry kind="src" path="madang-master/madang/src/main/java/com/madang/service"/>
+	<classpathentry kind="src" path="madang-master/madang/src/main/java/com/madang/vo"/>
+	<classpathentry kind="src" path="madang-master/madang/src/test/java"/>
+	<classpathentry kind="lib" path="madang-master/madang/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="madang-master/madang/bin/main"/>
+</classpath>

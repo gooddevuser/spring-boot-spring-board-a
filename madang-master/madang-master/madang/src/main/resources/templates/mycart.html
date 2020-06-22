@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>마당</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		
+		<mypageleftbar th:include="mypageleftbar :: mypageleftbar"> </mypageleftbar>
+		
+		<div id="colorlib-main">
+			<section class="ftco-section ftco-no-pt ftco-no-pb">
+	    	<div class="container">
+	    		<div class="row d-flex">
+	    			<div class="col-xl-8 px-md-5 py-5">
+	    				<div class="row pt-md-4">
+	    				
+	    					<div class="col-md-12">
+		    					<div class="blog-entry-2 ftco-animate">
+	    							<div th:each="file : ${ book.fileList }">
+		    						<a href="@{/book/download/} + ${ file.idx }"  class="img" th:style="'background-image: url(' + @{/upload-files/} + ${ file.savedfilename } + ')'"></a>
+		    						</div>
+		    					<div class="text pt-4">
+				              <h3 class="mb-4"><a href="#" th:text="${ book.bookname }"></a></h3>
+				              <span><i class="icon-calendar mr-2" th:text="${ book.bookid }"></i></span>
+		              		  <span><a href="single.html"><i class="icon-folder-o mr-2" th:text="${ book.publisher }"></i></a></span>
+		              		  <span><i class="icon-comment2 mr-2"></i>댓글 5개</span>
+				              <p class="mb-4" th:text="${ book.contents }"></p>
+				              
+							  <div class="ml-50 mb-50">							              
+							              <h3 class="mr-3" style="float:left; line-height:10px " th:text="${ book.price }"></h3>
+							              <h4 class="mb-3" style="text-decoration:line-through; line-height:12px;" th:text="${ book.saleprice }"></h4>
+							  </div>
+							  
+							 <div class="mb-4">
+					          	<div class="info bg-light p-4 border" style="margin-top: 40px;">
+						            <p>카드혜택가 : 32,550원</p>
+						            <hr>
+						            <p>배송정보 : 택배배송 평균 2일 이내 배송 (토,일,공휴일 제외) 안내</p>
+						            <hr>
+						            <p>배송비 : 무료</p>
+						          </div>
+					          </div>
+							  
+				              <div class="meta-wrap d-md-flex align-items-center">
+				              	<div class="half order-md-last text-md-right">
+					              	<p class="meta">
+					              		<span><i class="icon-heart"></i>3</span>
+					              		<span><i class="icon-eye"></i>100</span>
+					              		<span><i class="icon-comment"></i>5</span>
+					              	</p>
+				              	</div>
+				              	<div class="half">
+					              	<p class="float-left"><a href="board" class="btn btn-primary p-3 px-xl-4 py-xl-3">바로 구매하러가기</a></p>
+				              	</div>
+				              </div>				  
+				            </div>
+	    						</div>
+	    					</div>
+	    					
+			    		</div><!-- END-->
+			    		
+			    	</div>
+	    			
+	    			<div class="col-xl-4 sidebar ftco-animate pt-5">
+	            <div class="sidebar-box subs-wrap img py-4" style="background-image: url(images/bg_1.jpg);">
+								<div class="overlay"></div>
+								<h3 class="mb-4 sidebar-heading">Order</h3>
+								<p class="mb-4">전체상품 : 1개</p>
+	            </div>
+	            
+	            
+	            <div class="sidebar-box ftco-animate">
+	            	<h3 class="sidebar-heading">Publisher</h3>
+	              <ul class="categories">
+	                <li>주문금액 470,000 원</li>
+	                <li>할인금액 98,700 원</li>
+	                <li>배송비 470,000 원</li>
+	                <li>기타비용 98,700 원</li>
+	                <li>기타비용 98,700 원</li>
+	                <li>결제예정금액 371,300원</li>
+	              </ul>
+	            </div>
+	            
+	            <div class="sidebar-box subs-wrap img py-4" style="background-image: url(images/bg_1.jpg);">
+								<div class="overlay"></div>
+								<p class="mb-4">봄날의 이상, 찾아 얼마나 풀밭에 따뜻한 쓸쓸한 하였으며, 것이다.</p>
+	              <form action="#" class="subscribe-form">
+	                <div class="form-group">
+	                  <input type="submit" value="주문하러가기" class="mt-2 btn btn-white submit">
+	                </div>
+	              </form>
+	            </div>
+	          </div>
+	    			
+	    		</div>
+	    	</div>
+	    </section>
+		</div><!-- END COLORLIB-MAIN -->
+	</div><!-- END COLORLIB-PAGE -->
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>

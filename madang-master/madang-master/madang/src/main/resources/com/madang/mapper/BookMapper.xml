@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.madang.mapper.BookMapper">
+	
+	<insert id="insertBook" parameterType="com.madang.vo.Book"
+		useGeneratedKeys="true" keyColumn="bookid" keyProperty="bookid">
+		insert into Book(bookid,bookname,publisher,saleprice,price,contents)
+		values(#{bookid},#{bookname},#{publisher},#{saleprice},#{price},#{contents})
+	</insert>
+	
+	<insert id="insertBookFileList" parameterType="com.madang.vo.BookFile">
+		INSERT INTO bookfile
+		(bookid, userfilename, savedfilename, filesize, creatorid, createddatetime)
+		VALUES
+			<foreach collection="list" item="item" separator=",">
+			(#{item.bookid}, #{item.userfilename}, #{item.savedfilename}, #{item.filesize}, #{item.creatorid}, now())
+			</foreach>	
+	</insert>
+	
+	<resultMap id="bookMap" type="com.madang.vo.Book">
+		<id column="bookid" property="bookid" />
+		<result column="bookname" property="bookname" />
+		<result column="publisher" property="publisher" />
+		<result column="price" property="price" />
+		<result column="saleprice" property="saleprice" />
+		<result column="contents" property="contents" />
+		<collection column="bookid" property="fileList" resultMap="bookfileMap" />
+	</resultMap>	
+	<resultMap id="bookfileMap" type="com.madang.vo.BookFile">
+		<id column="idx" property="idx" />
+		<result column="userfilename" property="userfilename" />
+		<result column="savedfilename" property="savedfilename" />
+	</resultMap>
+	    
+	<select id="selectBookBybookid" parameterType="int" resultMap="bookMap">
+		select b.bookid, b.bookname, b.publisher, 
+		b.saleprice, b.price, b.contents,
+		f.idx, f.userfilename, f.savedfilename
+		from Book b
+		LEFT OUTER JOIN bookfile f
+		ON b.bookid = f.bookid
+		where b.bookid = #{bookid}
+	</select>
+	
+	<select id="selectBookBypublisher" parameterType="String" resultMap="bookMap">
+		select b.bookid, b.bookname, b.publisher, 
+		b.saleprice, b.price, b.contents,
+		f.idx, f.userfilename, f.savedfilename
+		from Book b
+		LEFT OUTER JOIN bookfile f
+		ON b.bookid = f.bookid
+		where b.publisher = #{publisher}
+	</select>
+	
+	<select id="selectBookBybookname" parameterType="String" resultMap="bookMap">
+		select b.bookid, b.bookname, b.publisher, 
+		b.saleprice, b.price, b.contents,
+		f.idx, f.userfilename, f.savedfilename
+		from Book b
+		LEFT OUTER JOIN bookfile f
+		ON b.bookid = f.bookid
+		where b.bookname like concat('%',#{bookname},'%')
+	</select>
+	
+	<select id="selectBookBypublishername" parameterType="String" resultMap="bookMap">
+		select b.bookid, b.bookname, b.publisher, 
+		b.saleprice, b.price, b.contents,
+		f.idx, f.userfilename, f.savedfilename
+		from Book b
+		LEFT OUTER JOIN bookfile f
+		ON b.bookid = f.bookid
+		where b.publisher like concat('%',#{publisher},'%')
+	</select>
+	
+	
+	<select id="selectBookBycontents" parameterType="String" resultMap="bookMap">
+		select b.bookid, b.bookname, b.publisher, 
+		b.saleprice, b.price, b.contents,
+		f.idx, f.userfilename, f.savedfilename
+		from Book b
+		LEFT OUTER JOIN bookfile f
+		ON b.bookid = f.bookid
+		where b.contents like concat('%',#{contents},'%')
+	</select>
+	
+	
+	<select id="selectBooklist" resultMap="bookMap">
+		select b.bookid, b.bookname, b.publisher, 
+		b.saleprice,b.price, b.contents,
+		f.idx, f.userfilename, f.savedfilename
+		from Book b
+		LEFT OUTER JOIN bookfile f
+		ON b.bookid = f.bookid
+	</select>
+	
+	
+	<select id="selectPublisherlist" resultType="com.madang.vo.Book">
+		select distinct publisher
+		from book
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

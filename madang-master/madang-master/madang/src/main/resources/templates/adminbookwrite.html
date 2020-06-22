@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>마당</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		
+		<adminleftbar th:include="adminleftbar :: adminleftbar"> </adminleftbar>
+		
+		<div id="colorlib-main">
+			<section class="ftco-section ftco-no-pt ftco-no-pb">
+	    	<div class="container">
+	    		<div class="row d-flex">
+	    			<div class="col-xl-8 px-md-5 py-5">
+	    				<div class="row pt-md-4">
+	    					
+	    					<div class="col-md-12">	    					
+		    					<div class="blog-entry-2 ftco-animate">
+		    					
+	    					<form action="/adminbookwrite" class="p-5 contact-form" method="post" enctype="multipart/form-data">
+	    					
+	    					<div class="col-md-12">
+		    				<div class="blog-entry-2 ftco-animate">
+	    						<a href="single.html" class="img" style="background-image: url(images/image_1.jpg);"></a>
+	    						<div class="text pt-4">
+	    						
+	              			  <div class="form-group">사진
+				                <input type="file" class="form-control" name="files" id="files" multiple="multiple">
+				              </div>	              			  		
+				              <div class="form-group">도서제목
+	                		  <input type="text" class="form-control" name="bookname" id="bookname">
+	              			  </div>
+	              			  
+				              <div class="form-group">출판사
+	                		  <input type="text" class="form-control" name="publisher" id="publisher">
+	              			  </div>
+	              			  
+	              			  <div class="form-group">도서가격
+	                		  <input type="text" class="form-control" name="price" id="price">
+	              			  </div>
+	              			  
+	              			  <div class="form-group">도서세일가격
+	                		  <input type="text" class="form-control" name="saleprice" id="saleprice">
+	              			  </div>
+	              			  				              
+		              		  <div class="form-group">도서내용
+	                		  <input type="text" class="form-control" name="contents" id="contents">
+	              			  </div>
+	              			  
+				              <p class="mb-4" ></p>
+				              
+				              <div class="ml-50 mb-50">							              
+							              <h3 class="mr-3" style="float:left; line-height:10px " ></h3>
+							  </div>
+							  
+							 <div class="mb-4">
+					          	<div class="info bg-light p-4 border" style="margin-top: 40px;">
+						            <p>세일가격</p>	
+						            <hr>
+						            <p>팔린수량</p>						            
+						          </div>
+					          </div>
+							  
+				              <div class="meta-wrap d-md-flex align-items-center">				              	
+				              	<div class="half">
+				              		<input type="submit" value="등록하기" class="btn btn-primary py-3 px-5 mt-3 mr-3" id="bookWriteBtn">					              	
+				              	</div>
+				              </div>	
+				            </div>
+	    						</div>
+	    					</div>
+	    					</form>
+	    					
+	    						</div>
+	    					</div>
+	    					
+			    		</div><!-- END-->
+			    		
+			    	</div>
+	    			<div class="col-xl-4 sidebar ftco-animate pt-5">
+	            <div class="sidebar-box pt-md-4">
+	              <form action="#" class="search-form">
+	                <div class="form-group">
+	                  <span class="icon icon-search"></span>
+	                  <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+	                </div>
+	              </form>
+	            </div>
+	            <div class="sidebar-box ftco-animate">
+	            	<h3 class="sidebar-heading">Publisher</h3>
+	              <ul class="categories">
+	                <li><a href="#">굿스포츠 <span>(6)</span></a></li>
+	                <li><a href="#">나무수 <span>(8)</span></a></li>
+	                <li><a href="#">대한미디어 <span>(2)</span></a></li>
+	                <li><a href="#">이상미디어 <span>(2)</span></a></li>
+	                <li><a href="#">삼성당 <span>(7)</span></a></li>
+	                <li><a href="#">Pearson <span>(7)</span></a></li>
+	              </ul>
+	            </div>
+	            <div class="sidebar-box ftco-animate">
+	              <h3 class="sidebar-heading">Best seller</h3>
+	              <div class="block-21 mb-4 d-flex">
+	                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+	                <div class="text">
+	                  <h3 class="heading"><a href="#">인생에 내는 아니한 긴지라 것이다. 끓는 이상의 같이, 듣는다.</a></h3>
+	                  <div class="meta">
+	                    <div><a href="#"><span class="icon-calendar"></span> 2020년 2월 5일</a></div>
+	                    <div><a href="#"><span class="icon-person"></span> 글쓴이</a></div>
+	                    <div><a href="#"><span class="icon-chat"></span> 5</a></div>
+	                  </div>
+	                </div>
+	              </div>	              
+
+	            <div class="sidebar-box ftco-animate">
+	              <h3 class="sidebar-heading">Tag Cloud</h3>
+	              <ul class="tagcloud">
+	                <a href="#" class="tag-cloud-link">animals</a>
+	                <a href="#" class="tag-cloud-link">human</a>
+	                <a href="#" class="tag-cloud-link">people</a>
+	                <a href="#" class="tag-cloud-link">cat</a>
+	                <a href="#" class="tag-cloud-link">dog</a>
+	                <a href="#" class="tag-cloud-link">nature</a>
+	                <a href="#" class="tag-cloud-link">leaves</a>
+	                <a href="#" class="tag-cloud-link">food</a>
+	              </ul>
+	            </div>
+
+							<div class="sidebar-box subs-wrap img py-4" style="background-image: url(images/bg_1.jpg);">
+								<div class="overlay"></div>
+								<h3 class="mb-4 sidebar-heading">Send Message</h3>
+								<p class="mb-4">봄날의 이상, 찾아 얼마나 풀밭에 따뜻한 쓸쓸한 하였으며, 것이다.</p>
+	              <form action="#" class="subscribe-form">
+	                <div class="form-group">
+	                  <input type="text" class="form-control" placeholder="이메일을 입력하세요">
+	                  <input type="submit" value="메일 보내기" class="mt-2 btn btn-white submit">
+	                </div>
+	              </form>
+	            </div>
+
+	            <div class="sidebar-box ftco-animate">
+	            	<h3 class="sidebar-heading">Archives</h3>
+	              <ul class="categories">
+	              	<li><a href="#">Decob14 2020 <span>(10)</span></a></li>
+	                <li><a href="#">September 2020 <span>(6)</span></a></li>
+	                <li><a href="#">August 2020 <span>(8)</span></a></li>
+	                <li><a href="#">July 2020 <span>(2)</span></a></li>
+	                <li><a href="#">June 2020 <span>(7)</span></a></li>
+	                <li><a href="#">May 2020 <span>(5)</span></a></li>
+	              </ul>
+	            </div>
+
+
+	            <div class="sidebar-box ftco-animate">
+	              <h3 class="sidebar-heading">ode to youth</h3>
+	              <p>천지는 가치를 없으면 이상, 열락의 오아이스도 장식하는 그리하였는가? 소리다.이것은 역사를 천지는 보는 때까지 그와 것이다.
+	              끝에 생의 것은 타오르고 예수는 갑 말이다. 청춘 방지하는 사랑의 예수는 청춘은 있는가? 따뜻한 능히 같이, 풍부하게 얼음에 눈에 거선의 운다.
+	              그들의 긴지라 반짝이는 생생하며, 트고, 교향악이다. 무엇을 아름답고 미인을 예가 생명을 것이다. 있는 우리의 힘차게 칼이다.
+	              우리 풀밭에 이 하는 이상은 것은 봄바람이다. 착목한는 인간이 노년에게서 눈이 과실이 장식하는 붙잡아 실로 찾아다녀도, 듣는다.</p>
+	            </div>
+	          </div><!-- END COL -->
+	          </div>
+	    		</div>
+	    	</div>
+	    </section>
+		</div><!-- END COLORLIB-MAIN -->
+	</div><!-- END COLORLIB-PAGE -->
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>

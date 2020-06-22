@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.madang.mapper.BoardreplyMapper">
+
+	<insert id="insertBoardreply" parameterType="com.madang.vo.Boardreply">
+		insert into Boardreply (boardreplyid,boardid,contents,writer)
+		values(#{boardreplyid},#{boardid},#{contents},#{writer})
+	</insert>	
+	
+	<select id="selectBoardreplylist" parameterType="int" resultType="com.madang.vo.Boardreply">
+		SELECT *
+		from Boardreply
+		where boardid = #{boardid}
+	</select>
+	
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.madang.mapper.MemberMapper">
+
+	<insert id="insertMember" parameterType="com.madang.vo.Member"
+	useGeneratedKeys="true" keyColumn="memberid" keyProperty="memberid">
+		insert into Member(memberid,id,passwd,email,usertype,name,address,phone)
+		values(#{memberid},#{id},#{passwd},#{email},#{usertype},#{name},#{address},#{phone})
+	</insert>
+	
+	<insert id="insertMemberFileList" parameterType="com.madang.vo.MemberFile">
+		INSERT INTO memberfile
+		(memberid, userfilename, savedfilename, filesize, creatorid, createddatetime)
+		VALUES
+			<foreach collection="list" item="item" separator=",">
+			(#{item.memberid}, #{item.userfilename}, #{item.savedfilename}, #{item.filesize}, #{item.creatorid}, now())
+			</foreach>	
+	</insert>
+	
+	<select id="selectMemberlist" resultType="com.madang.vo.Member">
+		select *
+		from Member
+	</select>
+	
+	<resultMap id="memberMap" type="com.madang.vo.Member">
+		<id column="memberid" property="memberid" />
+		<result column="id" property="id" />
+		<result column="passwd" property="passwd" />
+		<result column="email" property="email" />
+		<result column="usertype" property="usertype" />
+		<result column="name" property="name" />
+		<result column="address" property="address" />
+		<result column="phone" property="phone" />		
+		<result column="createddatetime" property="createddatetime" />			
+		<collection column="memberid" property="fileList" resultMap="memberfileMap" />
+	</resultMap>	
+	<resultMap id="memberfileMap" type="com.madang.vo.MemberFile">
+		<id column="idx" property="idx" />
+		<result column="userfilename" property="userfilename" />
+		<result column="savedfilename" property="savedfilename" />
+	</resultMap>
+	    
+	<select id="selectMemberBymemberid" parameterType="int" resultMap="memberMap">
+		select m.memberid, m.id, m.passwd, 
+		m.email, m.usertype, m.name, m.address, m.phone,
+		f.idx, f.userfilename, f.savedfilename
+		from Member m
+		LEFT OUTER JOIN memberfile f
+		ON m.memberid = f.memberid
+		where m.memberid = #{memberid}
+	</select>
+	
+	<select id="selectMemberByname" parameterType="String" resultMap="memberMap">
+		select m.memberid, m.id, m.passwd, 
+		m.email, m.usertype, m.name, m.address, m.phone,
+		f.idx, f.userfilename, f.savedfilename
+		from Member m
+		LEFT OUTER JOIN memberfile f
+		ON m.memberid = f.memberid
+		where m.name like concat('%',#{name},'%')
+	</select>
+		
+	<update id="updateMember" parameterType="com.madang.vo.Member">
+		update Member
+		set id = #{id} , email = #{email} , usertype = #{usertype} , name = #{name} , address = #{address} , phone = #{phone}
+		where memberid = #{memberid}
+	</update>
+		
+	<delete id="deleteMemberBymemberid" parameterType="com.madang.vo.Member">
+		delete 
+		from Member
+		where memberid = #{memberid}
+	</delete>
+	
+	<select id="selectMemberBymemberidAndpasswd" parameterType="com.madang.vo.Member" resultType="com.madang.vo.Member">
+		select *
+		from Member
+		where id = #{id} and passwd = #{passwd}
+	</select>
+	
+</mapper>

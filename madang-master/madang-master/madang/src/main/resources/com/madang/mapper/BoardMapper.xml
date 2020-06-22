@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.madang.mapper.BoardMapper">
+	
+	<select id="selectBoardlist" resultType="com.madang.vo.Board">
+		select *
+		from Board
+	</select>	
+	
+	<resultMap id="boardMap" type="com.madang.vo.Board">
+		<id column="boardid" property="boardid" />
+		<result column="title" property="title" />
+		<result column="contents" property="contents" />
+		<result column="writer" property="writer" />
+		<result column="hitcount" property="hitcount" />
+		<collection column="boardid" property="fileList" resultMap="boardfileMap" />
+	</resultMap>	
+	<resultMap id="boardfileMap" type="com.madang.vo.BoardFile">
+		<id column="idx" property="idx" />
+		<result column="userfilename" property="userfilename" />
+		<result column="savedfilename" property="savedfilename" />
+	</resultMap>
+	
+	<select id="selectBoardByboardid" parameterType="int" resultMap="boardMap">
+		select b.boardid, b.title, b.contents, 
+		b.writer, b.hitcount,
+		f.idx, f.userfilename, f.savedfilename
+		from Board b
+		LEFT OUTER JOIN boardfile f
+		ON b.boardid = f.boardid
+		where b.boardid = #{boardid}
+	</select>
+	
+	<select id="selectBoardBytitle" parameterType="String" resultMap="boardMap">
+		select b.boardid, b.title, b.contents, 
+		b.writer, b.hitcount,
+		f.idx, f.userfilename, f.savedfilename
+		from Board b
+		LEFT OUTER JOIN boardfile f
+		ON b.boardid = f.boardid
+		where b.title like concat('%',#{title},'%')
+	</select>
+		
+	<insert id="insertBoard" parameterType="com.madang.vo.Board"
+			useGeneratedKeys="true" keyColumn="boardid" keyProperty="boardid">
+		insert into Board(boardid,title,contents,hitcount,writer)
+		values(#{boardid},#{title},#{contents},#{hitcount},#{writer})
+	</insert>	
+	
+	<insert id="insertBoardFileList" parameterType="com.madang.vo.BoardFile">
+		INSERT INTO boardfile
+		(boardid, userfilename, savedfilename, filesize, creatorid, createddatetime)
+		VALUES
+			<foreach collection="list" item="item" separator=",">
+			(#{item.boardid}, #{item.userfilename}, #{item.savedfilename}, #{item.filesize}, #{item.creatorid}, now())
+			</foreach>	
+	</insert>
+	
+	<update id="updateBoard" parameterType="com.madang.vo.Board"
+	useGeneratedKeys="true" keyColumn="boardid" keyProperty="boardid">
+		update Board
+		set title = #{title} , contents = #{contents}
+		where boardid = #{boardid}
+	</update>
+	
+	<update id="updateBoardFileList" parameterType="com.madang.vo.BoardFile" >
+		update boardfile
+		set <foreach collection="list" item="item" separator=",">
+			boardid = #{item.boardid}, userfilename = #{item.userfilename}, savedfilename = #{item.savedfilename}, filesize = #{item.filesize}, creatorid = #{item.creatorid}, createddatetime = #{item.createddatetime}
+			</foreach>	
+		where boardid = #{boardid}
+	</update>
+	
+</mapper>
